@@ -39,7 +39,6 @@ public class BaseHttpRequest {
         context = localActivity;
         this.url = url;
         setListeners();
-
     }
 
     public IHTMLParser getHtmlParser() {
@@ -50,13 +49,6 @@ public class BaseHttpRequest {
         this.htmlParser = htmlParser;
     }
 
-    public String getCompleteUrl() {
-        return url;
-    }
-
-    public int getResponseCode() {
-        return responseCode;
-    }
 
     public IAsyncCallback getCallback() {
         return callback;

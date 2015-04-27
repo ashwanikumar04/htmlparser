@@ -21,15 +21,12 @@ public class BlogPostParser implements IHTMLParser {
             Document doc = Jsoup.parse(htmlToParse);
             response.setPosts(new ArrayList<BlogPost>());
             BlogPost post;
-            Elements containers = doc.select(".entry-header");
-            for (Element container : containers) {
-                Elements anchors = container.select("a");
-                for (Element anchor : anchors) {
-                    post = new BlogPost();
-                    post.setURL(anchor.attr("href"));
-                    post.setText(anchor.text());
-                    response.getPosts().add(post);
-                }
+            Elements anchors = doc.select(".entry-header a");
+            for (Element anchor : anchors) {
+                post = new BlogPost();
+                post.setURL(anchor.attr("href"));
+                post.setText(anchor.text());
+                response.getPosts().add(post);
             }
         } catch (Exception exception) {
             exception.printStackTrace();
